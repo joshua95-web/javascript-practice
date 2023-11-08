@@ -730,11 +730,11 @@ myRectangle1.printDescription();
 // console.log(evenDivs[0].parentElement.firstElementChild);
 // console.log(evenDivs[0].parentElement.nextElementSibling);
 
-view1.style.display = "none";
-view3.style.display = "flex";
-view3.style.flexDirection = "row";
-view3.style.flexWrap = "wrap";
-view3.style.margin = "10px";
+// view1.style.display = "none";
+// view3.style.display = "flex";
+// view3.style.flexDirection = "row";
+// view3.style.flexWrap = "wrap";
+// view3.style.margin = "10px";
 
 // while (view2.lastChild) {
 //   view2.lastChild.remove();
@@ -829,21 +829,246 @@ view3.style.margin = "10px";
 //     event.target.classList.remove("height100");
 //   });
 // };
-
+//
+//
+//
+//
+///////////////////////////////////////////////////////////
+//
+//
+//
+//
+///
+//
+//
+//
+//
+//
+//
+//
+//
+///
+//
+///
+//
+//
+///
+//
+//
+//
+//
+//
 // Prevent Default
 
-document.addEventListener("readystatechange", (event) => {
-  if (event.target.readyState === "complete") {
-    console.log("readyState: complete");
-    initApp();
-  }
-});
+// document.addEventListener("readystatechange", (event) => {
+//   if (event.target.readyState === "complete") {
+//     console.log("readyState: complete");
+//     initApp();
+//   }
+// });
 
-const initApp = () => {
-  const view3 = document.querySelector("#view3");
-  const myForm = view3.querySelector("#myForm");
-  myForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    console.log("submit event");
-  });
-};
+// const initApp = () => {
+//   const view3 = document.querySelector("#view3");
+//   const myForm = view3.querySelector("#myForm");
+//   myForm.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     console.log("submit event");
+//   });
+// };
+
+// Web Storage API
+
+//Not part of the DOM - refers to the window API
+// Available to JS via the global vcariable: 'window'
+
+// window.alert("window.location");
+// alert("location");
+
+// const myArray = ["eat", "sleep", "code"];
+
+// const myObject = {
+//   name: "Poshua",
+//   hobbies: ["eat", "sleep", "code"],
+//   logName: function () {
+//     console.log(this.name);
+//   },
+// };
+
+// sessionStorage.setItem("mySessionStore", JSON.stringify(myObject)); // this stores the object in the browser session even after it's closed. To view this, go into "Application" in the browser and click on "Session Storage"  - you will see the object there.
+// const mySessionData = JSON.parse(sessionStorage.getItem("mySessionStore")); // retrievs the stored data as a string. API and session data is always stored as a string, and it converts it to a string if it's not one already. Here, we use JSON.parse to convert it back to an object.
+// console.log(mySessionData);
+
+// sessionStorage.setItem("mySessionStore", JSON.stringify(myArray)); // this stores the object in the browser session even after it's closed. To view this, go into "Application" in the browser and click on "Session Storage"  - you will see the object there.
+// const mySessionData = JSON.parse(sessionStorage.getItem("mySessionStore")); // retrievs the stored data as a string. API and session data is always stored as a string, and it converts it to a string if it's not one already. Here, we use JSON.parse to convert it back to an object.
+// console.log(mySessionData);
+
+// localStorage is persistent until it's cleared, but remains even after the browser is closed. It's stored in the browser's local storage.
+// sessionStorage is cleared when the browser is closed.
+
+// localStorage.setItem("myLocalStore", JSON.stringify(myArray));
+// const storeLength = localStorage.length;
+// const myLocalData = JSON.parse(localStorage.getItem("myLocalStore"));
+
+// console.log(storeLength);
+
+// Modules
+
+// guitars.js content:
+
+// export default function playGuitar() {
+//   return "Playing guitar";
+// }
+
+// export const shredding = () => {
+//   return "Shredding guitar";
+// };
+
+// export const plucking = () => {
+//   return "Plucking guitar";
+// };
+
+// user.js content:
+
+// export default class User {
+//   constructor(email, name) {
+//     this._id = email;
+//     this._name = name;
+//   }
+
+//   greeting() {
+//     return `Hello, my name is ${this._name}`;
+//   }
+// }
+
+// import playGuitar from "./guitars.js";
+// import { shredding as shred, plucking as fingerpicking } from "./guitars.js";
+// import User from "./user.js";
+// const me = new User("email@email.com", "Poshua");
+// console.log(me);
+// console.log(me.greeting());
+
+// console.log(playGuitar());
+// console.log(shred());
+// console.log(fingerpicking());
+
+// Higher Order Functions
+
+// A higher order function is a function that does at least one
+// of the following:
+// 1. Takes one or more functions as arguments (parameters)
+// 2. Returns a function as the result
+
+// import { posts } from "./posts.js";
+
+// forEach()
+
+// posts.forEach((post) => {
+//   console.log(post);
+// });
+// console.clear();
+
+// filter()
+
+// const filteredPosts = posts.filter((post) => {
+//   return post.userId === 1;
+// });
+// console.log(filteredPosts);
+
+// map()
+
+// const mappedPosts = filteredPosts.map((post) => {
+//   return post.id * 10;
+// });
+// console.log(mappedPosts);
+
+// reduce()
+
+// const reducedPostsValue = mappedPosts.reduce((sum, post) => {
+//   return sum + post;
+// });
+// console.log(reducedPostsValue);
+
+// Fetch API requires a discussion of...
+// Callbacks, Promises, Thenables, Async/Await
+
+// Callbacks
+
+// function firstFunction(parameters, callback) {
+//   // do something
+//   callback();
+// }
+
+// // AKA "callback hell"
+
+// firstFunction(para, function () {
+//   secondFunction(para, function () {
+//     thirdFunction(para, function () {
+//       // and so on...
+//     });
+//   });
+// });
+
+// Promises are an alternative to callbacks
+
+// 3 states: Pending, Fulfilled, Rejected
+
+// const myPromise = new Promise((resolve, reject) => {
+//   const error = false;
+//   if (!error) {
+//     resolve("Resolved the promise!");
+//   } else {
+//     reject("Rejected the promise!");
+//   }
+// });
+
+// console.log(myPromise); // returns the state of the promise, not the value
+
+// Thenables: do this THEN do this THEN do this
+
+// myPromise
+//   .then((value) => {
+//     return value + 1;
+//   })
+//   .then((newValue) => {
+//     console.log(newValue);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// setTimeout
+
+// const myNextPromise = new Promise((resolve, reject) => {
+//   setTimeout(function () {
+//     resolve("myNextPromise resolved!");
+//   }, 3000);
+// });
+
+// myNextPromise.then((value) => {
+//   console.log(value);
+// });
+
+// myPromise.then((value) => {
+//   console.log(value);
+// });
+
+// pending
+
+// const users = fetch("https://jsonplaceholder.typicode.com/users");
+
+// console.log(users);
+// // returns pending because we are logging the promise before it's got the value
+
+// fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//     data.forEach((user) => {
+//       console.log(user);
+//     });
+//   });
+
+// fetch returns a promise. Each .then also returns a promise. So we have to consider when each one happens and what it returns.
+
+// Async/Await
