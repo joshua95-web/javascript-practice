@@ -1072,3 +1072,129 @@ myRectangle1.printDescription();
 // fetch returns a promise. Each .then also returns a promise. So we have to consider when each one happens and what it returns.
 
 // Async/Await
+
+// const myUsers = {
+//   userList: [],
+// };
+
+// const myFunction = async () => {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const jsonUserData = await response.json();
+//   return jsonUserData;
+// };
+
+// myFunction();
+
+// const anotherFunction = async () => {
+//   const data = await myFunction();
+//   myUsers.userList = data;
+//   console.log(myUsers.userList);
+// };
+
+// anotherFunction();
+// console.log(myUsers.userList);
+
+// workflow function
+
+// const getAllUserEmails = async () => {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const jsonUserData = await response.json();
+
+//   const userEmailArray = jsonUserData.map((user) => {
+//     return user.email;
+//   });
+
+//   postToWebPage(userEmailArray);
+// };
+
+// const postToWebPage = (data) => {
+//   console.log(data);
+// };
+
+// getAllUserEmails();
+
+// 2nd parameter of fetch
+
+// const getDadJoke = async () => {
+//   const response = await fetch("https://icanhazdadjoke.com/", {
+//     method: "GET",
+//     headers: {
+//       Accept: "application/json",
+//     },
+//   });
+//   const jsonJokeData = await response.json();
+// console.log(jsonJokeData);
+// }
+
+// getDadJoke();
+
+// const jokeObject = {
+//   id: "TvPf2gyAdxc",
+//   joke: "Why does Norway have barcodes on their battleships? So when they get back to port, they can Scandinavian.",
+//   status: 200,
+// };
+
+// const postData = async (jokeObj) => {
+//   const response = await fetch("https://httpbin.org/post", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(jokeObj),
+//   });
+//   const jsonResponse = await response.json();
+//   console.log(jsonResponse);
+// };
+
+// postData(jokeObject);
+
+// request a joke
+
+// const requestJoke = async (firstName, lastName) => {
+//   const response = await fetch(
+//     `https://api.icndb.com/jokes/random?firstName=${firstName}&lastName=${lastName}`
+//   );
+//   const jsonResponse = await response.json();
+//   console.log(jsonResponse.value.joke);
+// };
+
+// requestJoke("Poshua", "Vang");
+
+// asbtract into functions
+
+// maybe a form
+
+const getDataFromForm = () => {
+  const requestObj = {
+    firstName: "Bruce",
+    lastName: "Lee",
+    categories: ["nerdy"],
+  };
+  return requestObj;
+};
+
+const buildRequestUrl = (requestData) => {
+  return `https://api.icndb.com/jokes/random?firstName=${requestData.firstName}&lastName=${requestData.lastName}&limitTo=${requestData.categories}`;
+};
+
+const requestJoke = async (url) => {
+  const response = await fetch(url);
+  const jsonResponse = await response.json();
+  const jokeObj = jsonResponse.value.joke;
+  postJokeToPage(joke);
+};
+
+const postJokeToPage = (joke) => {
+  console.log(joke);
+};
+
+// Procedural "workflow" function
+const processJokeRequest = async () => {
+  // needs to be async because we are using await in the functions
+  const requestData = getDataFromForm();
+  const requestUrl = buildRequestUrl(requestData);
+  await requestJoke(requestUrl);
+  console.log("finished");
+};
+
+processJokeRequest();
